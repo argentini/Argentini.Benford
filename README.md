@@ -1,4 +1,4 @@
-# What is Benford’s law?
+# What is Benford’s Law?
 
 We all know about the [Normal distribution](https://en.wikipedia.org/wiki/Normal_distribution) and its ubiquity in all kind of natural phenomena or observations. But there is another law of numbers which does not get much attention but pops up everywhere — from nations’ population to stock market volumes to the domain of universal physical constants.
 
