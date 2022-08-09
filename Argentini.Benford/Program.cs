@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace Argentini.Benford;
+namespace Benford;
 
 internal class Program
 {
