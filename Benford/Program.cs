@@ -143,7 +143,7 @@ internal class Program
 
     private static async Task Main()
     {
-        var pathPrefix = "Argentini.Benford";
+        var pathPrefix = "Benford";
         var depthCount = 1;
 
         while (Directory.Exists(pathPrefix) == false && depthCount < 10)
@@ -152,7 +152,7 @@ internal class Program
 
             var paths = new string[depthCount];
             for (var x = 0; x < depthCount - 1; x++) paths[x] = "..";
-            paths[depthCount - 1] = "Argentini.Benford";
+            paths[depthCount - 1] = "Benford";
             pathPrefix = Path.Combine(paths);
         }
 
