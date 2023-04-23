@@ -40,7 +40,7 @@ internal class Program
             var deviation = ben - temp;
 
             // GenerateOutput output that also includes standard deviation for Benford's value versus observed value
-            var _output = $"{(x + 1):0}       {ben * 100:00.00}         {temp * 100:00.00}          {deviation:0.000000}";
+            var tempOutput = $"{(x + 1):0}       {ben * 100:00.00}         {temp * 100:00.00}          {deviation:0.000000}";
 
             devs.Add(Math.Abs(deviation));
 
@@ -49,7 +49,7 @@ internal class Program
                 largestVariance = deviation;
             }
 
-            output.Append(_output + "\r\n");
+            output.Append(tempOutput + "\r\n");
         }
 
         if (Math.Abs(largestVariance) < (decimal)0.02)
@@ -90,11 +90,11 @@ internal class Program
                         ref var pixel = ref pixelRow[x];
 
                         // Convert pixel data into 32-bit RGBA value
-                        var _string = ((uint) ((pixel.R > 0 ? pixel.R : 1) * (pixel.G > 0 ? pixel.G : 1) *
+                        var rgbaString = ((uint) ((pixel.R > 0 ? pixel.R : 1) * (pixel.G > 0 ? pixel.G : 1) *
                                                (pixel.B > 0 ? pixel.B : 1) * (pixel.A > 0 ? pixel.A : 1))).ToString();
 
                         // Get the first digit of the value
-                        var val = _string.Substring(0, 1);
+                        var val = rgbaString.Substring(0, 1);
 
                         //if (file.Contains("santa"))
                         //    await Console.Out.WriteLineAsync(_string);
@@ -174,9 +174,9 @@ internal class Program
             {
                 var list = await File.ReadAllLinesAsync(Path.Combine(pathPrefix, electionFile));
                 var package = new Package();
-                var _output = new StringBuilder();
+                var outputText = new StringBuilder();
 
-                _output.Append($"Analyzing {electionFile} ({list.Length:0,000}" + " items)...\r\n---------------------------------------------------------------------------\r\n");
+                outputText.Append($"Analyzing {electionFile} ({list.Length:0,000}" + " items)...\r\n---------------------------------------------------------------------------\r\n");
 
                 foreach (var item in list.OrderBy(i => i))
                 {
@@ -198,11 +198,11 @@ internal class Program
                     package.Total++;
                 }
 
-                _output.Append(GenerateOutput(package));
+                outputText.Append(GenerateOutput(package));
 
-                output2.Append(_output);
+                output2.Append(outputText);
 
-                await Console.Out.WriteLineAsync(_output);
+                await Console.Out.WriteLineAsync(outputText);
             }
             
             #endregion
@@ -211,21 +211,21 @@ internal class Program
 
             var jpegFiles = Directory.GetFiles(Path.Combine(pathPrefix, "images"), "*.jpg");
             var tiffFiles = Directory.GetFiles(Path.Combine(pathPrefix, "images"), "*.tiff");
-            var files = jpegFiles.Concat(tiffFiles);
+            var files = jpegFiles.Concat(tiffFiles).ToList();
 
             foreach (var file in files.OrderBy(f => f))
             {
                 var package = await ProcessImageFile(file);
-                var _file = file + $" ({package.Total:0,000} pixels)";
-                var _output = new StringBuilder();
+                var fileText = file + $" ({package.Total:0,000} pixels)";
+                var outputText = new StringBuilder();
 
                 counter++;
 
-                _output.Append($"Image {counter} of {files.Count()}: {_file.Split(Path.DirectorySeparatorChar).Last()}...\r\n---------------------------------------------------------------------------\r\n");
-                _output.Append(GenerateOutput(package));
-                output.Append(_output);
+                outputText.Append($"Image {counter} of {files.Count()}: {fileText.Split(Path.DirectorySeparatorChar).Last()}...\r\n---------------------------------------------------------------------------\r\n");
+                outputText.Append(GenerateOutput(package));
+                output.Append(outputText);
 
-                await Console.Out.WriteLineAsync(_output);
+                await Console.Out.WriteLineAsync(outputText);
             }
 
             #endregion
