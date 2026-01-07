@@ -26,4 +26,4 @@ Digit   Benford [%]
 
 ## Project
 
-This project is a .NET console app project to play with Benford's Law on images and a text file with numeric values. You can fill the text file with a large, random data set from most any source to see if the data follows this law and if not, implying the data has been artificially altered. Likewise you can put a set of images (*.jpg, *.tiff) into the *images* folder to analyze the pixel values in them. If the image results deviate from the law it could mean the image has been processed or altered.
+This project is a .NET console app project to play with Benford's Law using 2020 and 2024 U.S. election data. You can also fill a text file with a large, random data set from most any source to see if the data follows this law and determine if the data has been artificially altered.
