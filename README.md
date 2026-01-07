@@ -6,7 +6,7 @@ We all know about the [Normal distribution](https://en.wikipedia.org/wiki/Normal
 
 The distribution of first digits should follow the pattern in the image below:
 
-![Benford's Law Chart](https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Rozklad_benforda.svg/1280px-Rozklad_benforda.svg.png)
+![Benford's Law Chart](https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Rozklad_benforda.svg/500px-Rozklad_benforda.svg.png)
 
 This distribution is specifically:
 
